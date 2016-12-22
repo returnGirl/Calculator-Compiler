@@ -28,13 +28,15 @@ real -> [0-9]*.[0-9]*| [0-9]+
 
 #### 根据LL(1)文法构造预测分析表
 
-||    id | +  | - | * | / | ( | ) | $ |
+|    非终结符号   |    id | +  | - | * | / | ( | ) | $ |
 | :-------- | --------:| :--: |
 | E  | E -> TE' |     | E -> TE' | | | E -> TE'| | |
 | E'  | | E' -> +TE'    | E' -> -TE' | | | | E' -> ϵ  | E' -> ϵ  |
 | T  | T -> FT' |     | T -> FT' | | | T -> FT'| | |
 | T'  | |   T' -> ϵ   | T' -> ϵ  | T' -> *FT' | T' -> /FT' | | T' -> ϵ | T' -> ϵ |
 | F  | F -> **id** |     | F -> -F | | | F -> (E)| | |
+
+![这里写图片描述](http://img.blog.csdn.net/20161222235205819?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3pqZmxvb3I=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 ##### 最后根据此表完成对应函数
 ```cpp
